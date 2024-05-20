@@ -6,11 +6,7 @@ const port = 3001;
 
 const app = express();
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(apiDocumentation));
-app.get("/", (req, res) => {
-    res.send("Hello");
-})
-
+app.use("/", swaggerUI.serve, swaggerUI.setup(apiDocumentation));
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

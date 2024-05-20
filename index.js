@@ -1,6 +1,6 @@
 const express = require("express");
 const swaggerUI = require("swagger-ui-express");
-const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.17.10/swagger-ui.min.css";
 
 
 const apiDocumentation = require("./openapi.json");

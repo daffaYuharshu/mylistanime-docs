@@ -1,0 +1,1184 @@
+{
+  "openapi": "3.0.3",
+  "x-stoplight": {
+    "id": "sfvktuqwxk1mq"
+  },
+  "info": {
+    "title": "MyListAnime",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "Create New User (Register)",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "ro8u64j8amq6l"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9pg0q6cteux87"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": false,
+                      "message": "Akun berhasil dibuat"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email atau password kosong",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "h91h5sxsf9bad"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "vk00f6fagkhhk"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Email atau password belum diisi"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email Already Taken",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "wyelkp5jpjnae"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "3cmzb9xv2fd7v"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Email telah terdaftar"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "tfla9tob8d3vb"
+                    }
+                  },
+                  "password": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "lltl8e7lh24jd"
+                    }
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "email": "diki@gmail.com",
+                    "password": "omen"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Post the necessary fields for the API to create a new user."
+        },
+        "description": "Create a new user."
+      },
+      "parameters": []
+    },
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "post-login",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "xhh8iuzivdvh0"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "vzej4prww9dx2"
+                      }
+                    },
+                    "loginResult": {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "mdq8enfdm0ltt"
+                      },
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "x-stoplight": {
+                            "id": "qwhhogydd6ruz"
+                          }
+                        },
+                        "email": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "q5wahr3ncoa1p"
+                          }
+                        },
+                        "token": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "k0mksowpz5y3z"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": false,
+                      "message": "success",
+                      "loginResult": {
+                        "id": 0,
+                        "email": "diki@gmail.com",
+                        "token": "SECRET"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email atau password kosong",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "nqny7rbbl0acu"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "dmqxhwujono4a"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Email atau password kosong"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email atau password salah",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "eh24qp9b8m7z7"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "gqvhtk3sq49o7"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Email atau password salah"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Login ke MyListAnime",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "1uyab78odf1b4"
+                    }
+                  },
+                  "password": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "oy7s6t6ljxc7t"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "email": "diki@gmail.com",
+                    "password": "omen"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "delete": {
+        "summary": "Logout",
+        "operationId": "delete-logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "Logout dari MyAnimeList",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Token",
+            "description": "auth token"
+          }
+        ]
+      }
+    },
+    "/animes/": {
+      "get": {
+        "summary": "Get All Anime",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "fup16y4mepbnr"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "zy6zoce016qra"
+                        }
+                      },
+                      "title": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "6k9ohfy9n0q54"
+                        }
+                      },
+                      "rating": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "txga5z8yrlkgk",
+                          "explicitProperties": [
+                            "type",
+                            "format"
+                          ]
+                        },
+                        "format": "float"
+                      },
+                      "review": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "rl2tjr67zw56d"
+                        }
+                      },
+                      "genres": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "od135616q95cq"
+                        }
+                      },
+                      "episodes": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "x5iv9ybpj3slm"
+                        }
+                      },
+                      "status": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "px919fz5y9bsj"
+                        }
+                      },
+                      "year": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "t32pxvaf9hhjs"
+                        }
+                      },
+                      "image": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "4gq2sbeuusdip"
+                        }
+                      },
+                      "userId": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "rj974yb1qhngx"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "id": 6,
+                        "title": "Bocchi the Rock!",
+                        "rating": 9.99,
+                        "review": "good anime",
+                        "genres": "Comedy",
+                        "episodes": 12,
+                        "status": "Finished Airing",
+                        "year": 2022,
+                        "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg",
+                        "userId": 2
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized (tidak ada auth token)"
+          }
+        },
+        "operationId": "get-animes",
+        "description": "Mendapatkan semua anime yang telah ditambah",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Token",
+            "description": "auth token"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Add Anime",
+        "operationId": "post-animes",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "74e10w32eua0w"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "nzf7hw2mxhvkd"
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "2pcoj8dt0mbef"
+                      },
+                      "properties": {
+                        "userId": {
+                          "type": "integer",
+                          "x-stoplight": {
+                            "id": "ad3w3cuk7ni2a"
+                          }
+                        },
+                        "anime": {
+                          "type": "object",
+                          "x-stoplight": {
+                            "id": "y8i8mu0gc8oxo"
+                          },
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "x-stoplight": {
+                                "id": "njhzrqu0aexpt"
+                              }
+                            },
+                            "title": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "nj6s8kcuh7cse"
+                              }
+                            },
+                            "rating": {
+                              "type": "number",
+                              "x-stoplight": {
+                                "id": "psakrrksg92wc",
+                                "explicitProperties": [
+                                  "type",
+                                  "format"
+                                ]
+                              },
+                              "format": "float"
+                            },
+                            "review": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "j4fcy5xif192a"
+                              }
+                            },
+                            "genres": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "095mwtyxbpb29"
+                              }
+                            },
+                            "episodes": {
+                              "type": "integer",
+                              "x-stoplight": {
+                                "id": "z9yb9ld5pxpi2"
+                              }
+                            },
+                            "status": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "oyhnlodalopg6"
+                              }
+                            },
+                            "year": {
+                              "type": "integer",
+                              "x-stoplight": {
+                                "id": "tsw60g7nlt2n7"
+                              }
+                            },
+                            "image": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "p57cocvyzxbd8"
+                              }
+                            },
+                            "userId": {
+                              "type": "integer",
+                              "x-stoplight": {
+                                "id": "i3gxxevbi4l59"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": false,
+                      "message": "Anime berhasil ditambahkan",
+                      "data": {
+                        "userId": 2,
+                        "anime": {
+                          "id": 9,
+                          "title": "Bocchi the Rock!",
+                          "rating": 8.5,
+                          "review": "good anime",
+                          "genres": "Comedy",
+                          "episodes": 12,
+                          "status": "Finished Airing",
+                          "year": 2022,
+                          "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg",
+                          "userId": 2
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "pfmx04vqbnrs2"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "w1ov6ewidkvy8"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Anime sudah ditambahkan, silahkan masukkan anime lain"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Menambahkan anime baru",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Token",
+            "description": "auth token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "zac4mio3nr5fw"
+                    }
+                  },
+                  "rating": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "302jtiaaos3mi",
+                      "explicitProperties": [
+                        "type",
+                        "format"
+                      ]
+                    },
+                    "format": "float"
+                  },
+                  "review": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "zsark0j3136fx"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "title": "bocchi",
+                    "rating": 9,
+                    "revie": "good anime"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/animes/:animeId": {
+      "get": {
+        "summary": "Get Anime By Id",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "kkxiwj938nwdb"
+                      }
+                    },
+                    "title": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "z1wf45edvjob7"
+                      }
+                    },
+                    "rating": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "7f6qmj0g15qd4",
+                        "explicitProperties": [
+                          "type",
+                          "format"
+                        ]
+                      },
+                      "format": "float"
+                    },
+                    "review": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "mbpycueci08w2"
+                      }
+                    },
+                    "genres": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "y80gnvm5nuh52"
+                      }
+                    },
+                    "episodes": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "7orh9trfjx5ym"
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "3y35homhawq1q"
+                      }
+                    },
+                    "year": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "5iys9k64poee6"
+                      }
+                    },
+                    "image": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5lohzlyr8ecj2"
+                      }
+                    },
+                    "userId": {
+                      "type": "integer",
+                      "x-stoplight": {
+                        "id": "n1bs8mia9dqoj"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "id": 6,
+                      "title": "Bocchi the Rock!",
+                      "rating": 9.99,
+                      "review": "good anime",
+                      "genres": "Comedy",
+                      "episodes": 12,
+                      "status": "Finished Airing",
+                      "year": 2022,
+                      "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg",
+                      "userId": 2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "z0k7bfo7fi8er"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "k1cf2c02wumln"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Anime tidak ditemukan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-animes-:id",
+        "description": "Mendapatkan spesifik anime menggunakan id.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Token",
+            "description": "auth token"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Patch Anime By Id",
+        "operationId": "patch-animes-:id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "uuft371xrnusv"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5d1h7crhecx2u"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": false,
+                      "message": "Rating/review anime berhasil diubah"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "ogm08nz58amw3"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "a5f9hw49qsleh"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Anime tidak ditemukan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Mengubah rating atau review dari anime",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Token",
+            "description": "auth token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rating": {
+                    "type": "number",
+                    "x-stoplight": {
+                      "id": "qxqas9oshtcm7",
+                      "explicitProperties": [
+                        "type",
+                        "format"
+                      ]
+                    },
+                    "format": "float"
+                  },
+                  "review": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "5a3mgcomju8me"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "rating": 10,
+                    "review": "Nice anime"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Anime By Id",
+        "operationId": "delete-animes-:id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "y0n2lnuozyi03"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "eijqhqsshbwnt"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": false,
+                      "message": "Anime berhasil dihapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "cod7utjahorpp"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ioilbqy10v38h"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Anime tidak ditemukan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Menghapus satu anime menggunakan Id",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Token",
+            "description": "auth token"
+          }
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "title": "User",
+        "type": "object",
+        "example": [
+          {
+            "id": 0,
+            "email": "diki@gmail.com",
+            "password": "omen"
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the given user."
+          },
+          "email": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "6g35hves81t5z"
+            },
+            "description": "Unique"
+          },
+          "password": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "lcnsy14e74q1m"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "password"
+        ]
+      },
+      "MyAnime": {
+        "title": "MyAnime",
+        "x-stoplight": {
+          "id": "ohy36dhog7nu8"
+        },
+        "type": "object",
+        "example": [
+          {
+            "id": 6,
+            "title": "Bocchi the Rock!",
+            "rating": 8.5,
+            "review": "good anime",
+            "genres": "Comedy",
+            "episodes": 12,
+            "status": "Finished Airing",
+            "year": 2022,
+            "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg",
+            "userId": 2
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Primary Key"
+          },
+          "title": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ws2v8cfsh9745"
+            }
+          },
+          "rating": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "06tevuurmg7ps"
+            },
+            "format": "float"
+          },
+          "review": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "4awa00wp9o3gl"
+            }
+          },
+          "genres": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "nscpatpo4xv2q"
+            }
+          },
+          "episodes": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "aipsgw7hxs9m0"
+            }
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "lgmo3eqmu5kj3"
+            }
+          },
+          "year": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "cxf69c09n2z59"
+            }
+          },
+          "image": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "cn6ddbe32ny0x"
+            }
+          },
+          "userId": {
+            "x-stoplight": {
+              "id": "8b5q5jpd77360"
+            },
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "rating",
+          "review",
+          "userId"
+        ]
+      }
+    }
+  }
+}

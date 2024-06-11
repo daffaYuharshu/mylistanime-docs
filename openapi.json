@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.3",
+  "openapi": "3.1.0",
   "x-stoplight": {
     "id": "sfvktuqwxk1mq"
   },
@@ -469,7 +469,10 @@
             "name": "Token",
             "description": "auth token"
           }
-        ]
+        ],
+        "requestBody": {
+          "content": {}
+        }
       },
       "post": {
         "summary": "Add Anime",
@@ -843,7 +846,10 @@
             "name": "Token",
             "description": "auth token"
           }
-        ]
+        ],
+        "requestBody": {
+          "content": {}
+        }
       },
       "patch": {
         "summary": "Patch Anime By Id",
@@ -1051,6 +1057,134 @@
         ]
       },
       "parameters": []
+    },
+    "/animes/reviews": {
+      "get": {
+        "summary": "Get All Anime Review",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "fk3b3gpbsifgm"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "5z6lej7th4u0l"
+                        }
+                      },
+                      "title": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "suexcvae0nb71"
+                        }
+                      },
+                      "rating": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "r5ynfb5s0qzi2",
+                          "explicitProperties": [
+                            "type",
+                            "format"
+                          ]
+                        },
+                        "format": "float"
+                      },
+                      "review": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "g886yp9i7fewi"
+                        }
+                      },
+                      "genres": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "kaekn9y3jqfio"
+                        }
+                      },
+                      "episodes": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "44k5bob5w4ogl"
+                        }
+                      },
+                      "status": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "t9e9e9s59q3im"
+                        }
+                      },
+                      "year": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "7i9zx42jk08t5"
+                        }
+                      },
+                      "image": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "068ncxqx1pxvi"
+                        }
+                      },
+                      "userId": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "9twl9qt3q4522"
+                        }
+                      },
+                      "user": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "zgdrcm3vmwuea"
+                        },
+                        "properties": {
+                          "username": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "5bntj0uwmfzu8"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "id": 6,
+                        "title": "Bocchi the Rock!",
+                        "rating": 9.99,
+                        "review": "good anime",
+                        "genres": "Comedy",
+                        "episodes": 12,
+                        "status": "Finished Airing",
+                        "year": 2022,
+                        "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg",
+                        "userId": 2,
+                        "user": {
+                          "username": "daffa"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-animes-reviews",
+        "description": "Mendapatkan semua anime yang telah di review oleh semua user di MyListAnime"
+      }
     }
   },
   "components": {
@@ -1058,7 +1192,7 @@
       "User": {
         "title": "User",
         "type": "object",
-        "example": [
+        "examples": [
           {
             "id": 0,
             "email": "diki@gmail.com",
@@ -1096,7 +1230,7 @@
           "id": "ohy36dhog7nu8"
         },
         "type": "object",
-        "example": [
+        "examples": [
           {
             "id": 6,
             "title": "Bocchi the Rock!",

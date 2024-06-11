@@ -121,27 +121,34 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email": {
+                  "username": {
                     "type": "string",
                     "x-stoplight": {
                       "id": "tfla9tob8d3vb"
                     }
                   },
-                  "password": {
+                  "email": {
                     "type": "string",
                     "x-stoplight": {
                       "id": "lltl8e7lh24jd"
                     }
+                  },
+                  "password": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "hd3m8l0326k5w"
+                    }
                   }
                 },
                 "required": [
-                  "email",
-                  "password"
+                  "username",
+                  "email"
                 ]
               },
               "examples": {
                 "Example 1": {
                   "value": {
+                    "username": "jett",
                     "email": "diki@gmail.com",
                     "password": "omen"
                   }

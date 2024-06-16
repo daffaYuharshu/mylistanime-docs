@@ -1190,7 +1190,240 @@
           }
         },
         "operationId": "get-animes-reviews",
-        "description": "Mendapatkan semua anime yang telah di review oleh semua user di MyListAnime"
+        "description": "Mendapatkan semua anime yang telah di review oleh semua user di MyListAnime",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "title",
+            "description": "Judul anime"
+          }
+        ],
+        "requestBody": {
+          "content": {}
+        }
+      },
+      "parameters": []
+    },
+    "/profile/:username": {
+      "get": {
+        "summary": "Get User Profile",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "e9n82zejvy254"
+                      }
+                    },
+                    "user": {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "6m11afd981gwq"
+                      },
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "x-stoplight": {
+                            "id": "c4eoujmkscozk"
+                          }
+                        },
+                        "username": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "5ak4axttyikjz"
+                          }
+                        },
+                        "email": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "73dwiuhktn389"
+                          }
+                        },
+                        "image": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "nf447hgm8k96j"
+                          }
+                        },
+                        "desc": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "bycv95qi7g55m"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": false,
+                      "user": {
+                        "id": 1,
+                        "username": "dikiiso",
+                        "email": "dikibrim@gmail.com",
+                        "image": "http://mylistanime-api.vercel.app/images/2e47adjqwoidjdqwdqw.jpg",
+                        "desc": "halo"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "u479xnf4ecc74"
+                      }
+                    },
+                    "": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "g4lr5o6oz584m"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Profil tidak ditemukan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-profile-:username"
+      }
+    },
+    "/profile/edit": {
+      "patch": {
+        "summary": "Edit User Profile",
+        "operationId": "patch-profile-edit",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "d6juesqxtwvht"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "mjog8r0hg67f6"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": false,
+                      "message": "Profil berhasil diperbarui"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Jika ekstensi gambar selain jpg, jpeg, png atau file lebih besar dari 1 MB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "2r4oevkqqtqh1"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5h4ii6gi629is"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Ext gambar tidak valid/Gambar harus kurang dari 1 MB"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "6b1amegojv29v"
+                    },
+                    "description": "type: File"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "qlomaegm1q64e"
+                    },
+                    "description": "type: Text"
+                  }
+                }
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "image": "gambar.png",
+                    "desc": "cek123"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "",
+        "parameters": []
       }
     }
   },

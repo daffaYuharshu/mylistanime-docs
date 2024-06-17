@@ -1207,7 +1207,7 @@
       },
       "parameters": []
     },
-    "/profile/:username": {
+    "/:username": {
       "get": {
         "summary": "Get User Profile",
         "tags": [],
@@ -1316,9 +1316,10 @@
           }
         },
         "operationId": "get-profile-:username"
-      }
+      },
+      "parameters": []
     },
-    "/profile/edit": {
+    "/edit": {
       "patch": {
         "summary": "Edit User Profile",
         "operationId": "patch-profile-edit",
@@ -1423,8 +1424,18 @@
           "description": ""
         },
         "description": "",
-        "parameters": []
-      }
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Token",
+            "description": "auth token"
+          }
+        ]
+      },
+      "parameters": []
     }
   },
   "components": {

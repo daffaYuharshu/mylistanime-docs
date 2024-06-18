@@ -699,7 +699,7 @@
                   "value": {
                     "title": "bocchi",
                     "rating": 9,
-                    "revie": "good anime"
+                    "review": "good anime"
                   }
                 }
               }
@@ -1446,8 +1446,11 @@
         "examples": [
           {
             "id": 0,
-            "email": "diki@gmail.com",
-            "password": "omen"
+            "username": "dikibrim",
+            "email": "dikibrim@gmail.com",
+            "password": "$2b$10$VXw9lprNRjMoF3nAH.xscehDarEApqWxjx7McJtfk.gqtyCa8SAJm",
+            "image": "http://localhost:3001/images/c5b86636c503af71381f8d8425f723ad.jpg",
+            "desc": "test"
           }
         ],
         "properties": {
@@ -1455,22 +1458,41 @@
             "type": "integer",
             "description": "Unique identifier for the given user."
           },
-          "email": {
+          "username": {
             "type": "string",
             "x-stoplight": {
               "id": "6g35hves81t5z"
             },
             "description": "Unique"
           },
-          "password": {
+          "email": {
             "type": "string",
             "x-stoplight": {
               "id": "lcnsy14e74q1m"
+            }
+          },
+          "password": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0rz0uvdbg4m0u"
+            }
+          },
+          "image": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "um7plcy1b5pfd"
+            }
+          },
+          "desc": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xzb6sa174y7i0"
             }
           }
         },
         "required": [
           "id",
+          "username",
           "email",
           "password"
         ]

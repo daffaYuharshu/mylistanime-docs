@@ -51,7 +51,7 @@
             }
           },
           "400": {
-            "description": "Email atau password kosong",
+            "description": "Username, email atau password kosong",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,13 +60,13 @@
                     "error": {
                       "type": "boolean",
                       "x-stoplight": {
-                        "id": "h91h5sxsf9bad"
+                        "id": "068bhdnk01mb8"
                       }
                     },
                     "message": {
                       "type": "string",
                       "x-stoplight": {
-                        "id": "vk00f6fagkhhk"
+                        "id": "oh2nm21csztfu"
                       }
                     }
                   }
@@ -75,7 +75,71 @@
                   "Example 1": {
                     "value": {
                       "error": true,
-                      "message": "Email atau password belum diisi"
+                      "message": "Username, email atau password belum diisi"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Email tidak valid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "xiqu3c4s63ocx"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "5ho4a6j2ocxiy"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Email tidak valid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Username telah digunakan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "i9pwvtd9xni7v"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "m4ik59e845mmf"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Username telah digunakan"
                     }
                   }
                 }
@@ -83,7 +147,7 @@
             }
           },
           "409": {
-            "description": "Email Already Taken",
+            "description": "Email sudah digunakan",
             "content": {
               "application/json": {
                 "schema": {
@@ -108,6 +172,38 @@
                     "value": {
                       "error": true,
                       "message": "Email telah terdaftar"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "411": {
+            "description": "Password kurang dari 8 karakter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "73sruz4nclr8k"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "3d2dz3jmu37tu"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "error": true,
+                      "message": "Password minimal 8 karakter"
                     }
                   }
                 }

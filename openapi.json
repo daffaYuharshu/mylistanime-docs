@@ -13,7 +13,7 @@
     }
   ],
   "paths": {
-    "/register": {
+    "/user/register": {
       "post": {
         "summary": "Create New User (Register)",
         "operationId": "post-user",
@@ -258,7 +258,7 @@
       },
       "parameters": []
     },
-    "/login": {
+    "/user/login": {
       "post": {
         "summary": "Login",
         "operationId": "post-login",
@@ -423,9 +423,10 @@
             }
           }
         }
-      }
+      },
+      "parameters": []
     },
-    "/logout": {
+    "/user/logout": {
       "delete": {
         "summary": "Logout",
         "operationId": "delete-logout",
@@ -448,7 +449,8 @@
             "description": "auth token"
           }
         ]
-      }
+      },
+      "parameters": []
     },
     "/animes/": {
       "get": {
@@ -1303,7 +1305,7 @@
       },
       "parameters": []
     },
-    "/:username": {
+    "/user/:username": {
       "get": {
         "summary": "Get User Profile",
         "tags": [],
@@ -1415,7 +1417,7 @@
       },
       "parameters": []
     },
-    "/edit": {
+    "/user/edit": {
       "patch": {
         "summary": "Edit User Profile",
         "operationId": "patch-profile-edit",
